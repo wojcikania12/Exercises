@@ -7,6 +7,6 @@
 #include <cstdint>
 #include <string>
 
-uint64_t DoubleBasePalindromes(int max_vaule_exculsive);
+uint64_t DoubleBasePalindromes(int max_vaule_exculsive) ;
 
 #endif //JIMP_EXERCISES_DOUBLEBASEPALINDROMES_H

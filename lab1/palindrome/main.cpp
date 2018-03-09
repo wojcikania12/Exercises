@@ -9,7 +9,7 @@ using namespace std;
 int main() {
     int option;
     string str;
-    cout << "Wybierz opcje i wpisz numer" << endl;
+    cout << "Wybierz opcje i wpisz numer " << endl;
     cout << "1. Sprawdz palindrom" << endl << "2. Wyjscie" << endl;
     cin >> option;
     if(option == 1){

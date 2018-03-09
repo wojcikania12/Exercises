@@ -10,7 +10,7 @@ bool is_palindrome(std::string str){
     int length = str.size();
     std::string reversed;
     for(int i = 1; i <= length ; i++){
-        reversed = reversed + str[length- i] ;
+        reversed = reversed + str[length - i] ;
     }
     if(str == reversed) return true;
     else return false;

@@ -8,7 +8,7 @@
 using namespace std;
 
 int main(){
-    cout << "Suma wynosi: " << DoubleBasePalindromes(1000000) << endl;
+    cout << "Suma wynosi:  " << DoubleBasePalindromes(1000000) << endl;
     return 0;
 
 }

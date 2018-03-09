@@ -14,7 +14,7 @@ std::string to_binary(int decimal){
         decimal /=2;
         r++;
     }
-    for(int j=r-1; j>=0; j--){
+    for(int j= r-1; j>=0; j--){
         str_binary+= std::to_string(binary[j]);
     }
     return str_binary;
