@@ -3,7 +3,6 @@
 //
 
 #include <iostream>
-#include <cstdint>
 #include "DoubleBasePalindromes.h"
 using namespace std;
 
