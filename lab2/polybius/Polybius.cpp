@@ -3,25 +3,21 @@
 //
 
 #include <string>
-
 #include "Polybius.h"
-using namespace std;
 
-
-string CheckIfInKey(char tab[5][5], char letter){
-    string crypted;
-    for(int j = 0; j< 5; j++){
-        for(int k = 0; k<5; k++){
-            if(letter == tab[j][k]){
-                crypted += to_string(j+1);
-                crypted += to_string(k+1);
+std::string CheckIfInKey(char tab[5][5], char letter){
+    std::string crypted;
+    for(int j = 0; j< 5; ++j) {
+        for (int k = 0; k < 5; ++k) {
+            if (letter == tab[j][k] || letter == tab[j][k] + 32) {
+                crypted += std::to_string(j + 1);
+                crypted += std::to_string(k + 1);
                 return crypted;
             }
         }
     }
-    return "X";
+    return "";
 }
-
 
 std::string PolybiusCrypt(std::string message){
     char PolybiusSquare2[5][5] = {
@@ -31,36 +27,34 @@ std::string PolybiusCrypt(std::string message){
             {'Q', 'R', 'S', 'T', 'U'},
             {'V', 'W', 'X', 'Y', 'Z'},
     };
-    transform(message.begin(), message.end(), message.begin(),::toupper);
-    string crypted;
+
+    std::string crypted;
     for (char i : message) {
-        if (i == ' ') {
-            continue;
+        if (i=='J' || i== 'j') {
+            crypted += "24";
         }
-        if (i == 'J' || i == 'I') {
-            crypted += to_string(24);
-            continue;
+        else {
+            crypted += CheckIfInKey(PolybiusSquare2, i);
         }
-        crypted += CheckIfInKey(PolybiusSquare2, i);
     }
     return crypted;
 }
 
 std::string PolybiusDecrypt(std::string crypted){
-    /*string PolybiusSquare2[5][5] = {
-            {"A", "B", "C", "D", "E"},
-            {"F", "G", "H", "I", "K"},
-            {"L", "M", "N", "O", "P"},
-            {"Q", "R", "S", "T", "U"},
-            {"V", "W", "X", "Y", "Z"},
+    char PolybiusSquare2[5][5] = {
+            {'A', 'B', 'C', 'D', 'E'},
+            {'F', 'G', 'H', 'I', 'K'},
+            {'L', 'M', 'N', 'O', 'P'},
+            {'Q', 'R', 'S', 'T', 'U'},
+            {'V', 'W', 'X', 'Y', 'Z'},
     };
-    string decrypted;
+    std::string decrypted;
     int x,y;
     for(int i = 0; i < crypted.length(); i+=2){
         x =((int) crypted[i])-1-'0';
         y =((int) crypted[i+1]) -'0'-1;
-          decrypted += PolybiusSquare2[x][y];
+          decrypted += (PolybiusSquare2[x][y]+32);
         }
-    return decrypted;*/
+    return decrypted;
 }
 
