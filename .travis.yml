@@ -23,12 +23,16 @@ script:
   - echo `which $CXX`
   - mkdir build && cd build;
     cmake -DCMAKE_CXX_COMPILER=$CXX ..
-  - make example_examplelibrary_tests
-  - tests/exampletest/example_examplelibrary_tests
-  - make lab3_tiny_url_step1_tests
-  - tests/lab3test/lab3_tiny_url_step1_tests
-  - make lab3_tiny_url_step2_tests
-  - tests/lab3test/lab3_tiny_url_step2_tests
+  - make lab3_smart_tree_step1_tests
+  - tests/lab3test/lab3_smart_tree_step1_tests
+  - make lab3_smart_tree_step2_tests
+  - tests/lab3test/lab3_smart_tree_step2_tests
+  - make lab3_smart_tree_step3_tests
+  - tests/lab3test/lab3_smart_tree_step3_tests
+  - make lab3_smart_tree_step4_tests
+  - tests/lab3test/lab3_smart_tree_step4_tests
+  - make lab3_smart_tree_step5_tests
+  - tests/lab3test/lab3_smart_tree_step5_tests
 
 
   
