@@ -64,7 +64,6 @@ std::string Encode(const std::string &url, std::unique_ptr<TinyUrlCodec> *codec)
     return tinyurl;
 }
 
-
     std::string Decode(const std::unique_ptr<TinyUrlCodec> &codec, const std::string &hash) {
         std::string url;
         for(auto a: codec->Map){

@@ -25,5 +25,4 @@ namespace tinyurl {
     std::string Decode(const std::unique_ptr <TinyUrlCodec> &codec, const std::string &hash);
 }
 
-
 #endif //JIMP_EXERCISES_TINYURL_H
