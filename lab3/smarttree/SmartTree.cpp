@@ -54,10 +54,10 @@ namespace datastructures {
             str += " " ;
             str+= DumpTree(tree->right);
         }
-        if(nullptr == tree->right){
+        if(tree->right == nullptr){
             str+=" [none]";
         }
-        if(nullptr == tree->left){
+        if(tree->left== nullptr){
             str+=" [none]";
         }
         str += "]";
