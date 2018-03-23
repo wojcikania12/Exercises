@@ -44,25 +44,21 @@ namespace datastructures {
     }
 
     std::string DumpTree(const std::unique_ptr<SmartTree> &tree) {
-        std::string str="[";
-        if (tree == nullptr) {
-            return "";
+        std::string output="[";
+        int value;
+        value=tree->value;
+        output=output+std::to_string(value);
+        if(tree->left!=nullptr){
+            output = output + " " + DumpTree(tree->left);
+        }else{
+            output = output + " [none]";
         }
-        str += std::to_string(tree->value);
-        if (tree->left == nullptr && tree->right == nullptr) {
-            return"";
+        if(tree->right!=nullptr){
+            output = output + " " + DumpTree(tree->right);
+        }else{
+            output=output+" [none]";
         }
-        if(tree -> left != nullptr){
-           str+='[';
-           DumpTree(tree->left);
-           str+= ']';
-        }
-        if (tree->right) {
-            str+='[';
-            DumpTree(tree->right);
-            str+= ']';
-        }
-        return str;
+        return output + "]";
     }
 
     std::unique_ptr<SmartTree> RestoreTree(const std::string &tree){}
