@@ -11,6 +11,7 @@
 #include <stack>
 
 
+
 namespace datastructures {
     typedef struct SmartTree {
         std::unique_ptr<SmartTree> left;

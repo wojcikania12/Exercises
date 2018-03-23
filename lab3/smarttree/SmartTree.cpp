@@ -42,22 +42,29 @@ namespace datastructures {
     }
 
     std::string DumpTree(const std::unique_ptr<SmartTree> &tree) {
-        std::string TreeValues;
-        TreeValues += ('[' + std::to_string(tree->value));
-        while(tree != nullptr) {
-            if (tree->right != nullptr) {
-                TreeValues += ' ';
-                TreeValues += DumpTree(tree->right);
-            } else if (tree->left != nullptr) {
-                TreeValues += ' ';
-                TreeValues += DumpTree(tree->left);
-            } else {
-                TreeValues += " [none]";
-            }
-            TreeValues += ']';
+        std::string str="[";
+        if (tree == nullptr) {
+            return "";
         }
-        return TreeValues;
+        str += std::to_string(tree->value);
+        if (tree->left == nullptr && tree->right == nullptr) {
+            return"";
+        }
+        if(tree -> left != nullptr){
+           str+='[';
+           DumpTree(tree->left);
+           str+= ']';
+        }
+        if (tree->right) {
+            str+='[';
+            DumpTree(tree->right);
+            str+= ']';
+        }
+        return str;
     }
+
+    std::unique_ptr<SmartTree> RestoreTree(const std::string &tree){}
+
 
     int FindIndex(int first, int last, std::string tree) {
         int index;
@@ -78,10 +85,7 @@ namespace datastructures {
         return index;
     }
 
-    std::unique_ptr<SmartTree> RestoreTree(const std::string &tree) {
-        std::unique_ptr<SmartTree> node = std::make_unique<SmartTree>();
 
-    }
 }
 
 
