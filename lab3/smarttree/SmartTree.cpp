@@ -19,11 +19,11 @@ namespace datastructures {
             node->left = move(left_subtree);
         }
         else {
-            while (node->left != nullptr)
-                node= move(node->left);
-                node->left = move(left_subtree);
+            while (node->left != nullptr) {
+                node = move(node->left);
+            }
+            node->left = move(left_subtree);
         }
-
         return node;
     }
 
@@ -36,8 +36,9 @@ namespace datastructures {
             node->left = move(right_subtree);
         }
         else {
-            while (node->right != nullptr)
-                node= move(node->right);
+            while (node->right != nullptr) {
+                node = move(node->right);
+            }
             node->left = move(right_subtree);
         }
 
