@@ -59,7 +59,6 @@ std::string Encode(const std::string &url, std::unique_ptr<TinyUrlCodec> *codec)
             tinyurl += l;
         }
         codec->get()-> Map.emplace(tinyurl, url);
-
     }
     return tinyurl;
 }
@@ -72,8 +71,7 @@ std::string Encode(const std::string &url, std::unique_ptr<TinyUrlCodec> *codec)
             }
         }
         return url;
-
-
-    }}
+    }
+}
 
 

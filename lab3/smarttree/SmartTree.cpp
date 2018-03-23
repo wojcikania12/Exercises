@@ -54,7 +54,6 @@ namespace datastructures {
                 str+= " ";
                 str+= DumpTree(tree->left);
             }
-
             if(tree->right==nullptr){
                 str+=" [none]";
             }
@@ -66,9 +65,6 @@ namespace datastructures {
         str += "]";
         return str;
     }
-
-    std::unique_ptr<SmartTree> RestoreTree(const std::string &tree){}
-
 
     int FindIndex(int first, int last, std::string tree) {
         int index;
@@ -88,6 +84,13 @@ namespace datastructures {
         }
         return index;
     }
+
+    std::unique_ptr<SmartTree> RestoreTree(const std::string &tree){
+
+    }
+
+
+
 
 
 }
