@@ -1,15 +1,13 @@
 //
-// Created by Ania Wójcik on 31.03.2018.
+// Created by Ania Wójcik on 04.04.2018.
 //
 
 #ifndef JIMP_EXERCISES_SIMPLETEMPLATEENGINE_H
 #define JIMP_EXERCISES_SIMPLETEMPLATEENGINE_H
-
 #include <string>
 #include <unordered_map>
 #include <regex>
-
-
+#include <iostream>
 namespace nets{
     class View{
     public:
@@ -21,5 +19,8 @@ namespace nets{
 
     };
 }
+
+
+
 
 #endif //JIMP_EXERCISES_SIMPLETEMPLATEENGINE_H
