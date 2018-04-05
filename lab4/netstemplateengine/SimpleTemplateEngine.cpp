@@ -14,10 +14,10 @@ namespace nets {
         std::regex pattern(R"(\{\{(\w*)\}\})");
         std::smatch found_match;
         regex_search(temp, found_match, pattern);
-        bool flag = true;
-        while(flag) {
+        bool flag = false;
+        while(true) {
             match_index = temp.find(found_match[0]);
-            if(match_index!= std::string::npos) {
+            while((match_index!= std::string::npos)){
                 for (const auto &iterator : model) {
                     if (iterator.first == found_match[1]) {
                         temp.replace(match_index, found_match[0].length(), iterator.second);
@@ -25,11 +25,14 @@ namespace nets {
                         temp.replace(match_index, found_match[0].length(), "");
                     }
                 }
-            }
-                else{
-                   break;
+                flag = regex_search(temp, found_match, pattern);
+                if(flag){
+                    match_index = temp.find(found_match[0]);
                 }
-            flag =regex_search(temp, found_match, pattern);
+                else break;
+
+            }
+            break;
         }
         return temp;
 
