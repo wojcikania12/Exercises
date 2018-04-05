@@ -10,19 +10,28 @@ namespace nets {
 
     std::string View::Render(const std::unordered_map<std::string, std::string> &model) const {
         std::string temp = input;
-        size_t match_index, regex_index = 0;
+        size_t match_index;
         std::regex pattern(R"(\{\{(\w*)\}\})");
         std::smatch found_match;
         regex_search(temp, found_match, pattern);
-            match_index = temp.find(found_match[regex_index]);
+        bool flag = true;
+        while(flag) {
+            match_index = temp.find(found_match[0]);
+            if(match_index!= std::string::npos) {
                 for (const auto &iterator : model) {
-                    std::string str = found_match[(regex_index + 1)];
-                    if (iterator.first == str) {
-                        temp.replace(match_index, found_match[regex_index].length(), iterator.second);
+                    if (iterator.first == found_match[1]) {
+                        temp.replace(match_index, found_match[0].length(), iterator.second);
                     } else {
-                        temp.replace(match_index, found_match[regex_index].length(), "");
+                        temp.replace(match_index, found_match[0].length(), "");
                     }
+                }
+            }
+                else{
+                   break;
+                }
+            flag =regex_search(temp, found_match, pattern);
         }
         return temp;
+
     }
 }
