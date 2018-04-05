@@ -18,6 +18,7 @@ namespace nets {
         bool replaced = false;
         match_index = temp.find(found_match[0]);
         while(true) {
+            bool replaced = false;
             if(match_index!= std::string::npos) {
                 for (auto iterator : model) {
                     if (iterator.first == found_match[1]) {
