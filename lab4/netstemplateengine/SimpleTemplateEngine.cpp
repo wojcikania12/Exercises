@@ -15,9 +15,9 @@ namespace nets {
         std::smatch found_match;
         regex_search(temp, found_match, pattern);
         bool flag = false;
+        match_index = temp.find(found_match[0]);
         while(true) {
-            match_index = temp.find(found_match[0]);
-            while((match_index!= std::string::npos)){
+            if(match_index!= std::string::npos) {
                 for (const auto &iterator : model) {
                     if (iterator.first == found_match[1]) {
                         temp.replace(match_index, found_match[0].length(), iterator.second);
@@ -25,15 +25,15 @@ namespace nets {
                         temp.replace(match_index, found_match[0].length(), "");
                     }
                 }
+            }
                 flag = regex_search(temp, found_match, pattern);
                 if(flag){
                     match_index = temp.find(found_match[0]);
                 }
                 else break;
 
-            }
-            break;
         }
+
         return temp;
 
     }
