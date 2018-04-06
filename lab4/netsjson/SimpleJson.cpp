@@ -42,7 +42,7 @@ namespace nets{
 
     std::string JsonValue::ToString() const{
         std::ostringstream output;
-        std::string temp,temp2,temp3,key;
+        std::string temp,temp2,temp3;
         std::string str;
         switch(number){
             case 1:
@@ -85,13 +85,11 @@ namespace nets{
                 return temp2;
             case 6:
                 temp3="\"";
-                for(auto k:s){
-                    if(k=='\\' || k=='\"'||k=='"'){
-                        temp3+="\\" + k;
+                for(int i=0;i<s.size();++i){
+                    if(s[i]=='\\' ||s[i]=='\"'){
+                        temp3+='\\' ;
                     }
-                    else {
-                        temp3 += k;
-                    }
+                    temp3 += s[i];
                 }
                 temp3+="\"";
                 return temp3;
