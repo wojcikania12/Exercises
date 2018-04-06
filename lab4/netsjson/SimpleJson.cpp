@@ -78,16 +78,15 @@ namespace nets{
                             temp2 += '\\';
                         }
                     }
-                        temp2 += j.first + "\": " + j.second.ToString() + ", ";
+                    temp2 += j.first + "\": " + j.second.ToString() + ", ";
 
                     }
-                    temp2 = temp2.substr(0, temp2.length() - 2) + "}";
-
+                temp2 = temp2.substr(0, temp2.length() - 2) + "}";
                 return temp2;
             case 6:
                 temp3="\"";
                 for(auto k:s){
-                    if(k=='\\' || k=='\"'){
+                    if(k=='\\' || k=='\"'||k=='"'){
                         temp3+="\\";
                     }
                     temp3+= k;
