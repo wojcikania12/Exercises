@@ -10,6 +10,8 @@
 #include <vector>
 #include <map>
 #include <sstream>
+#include <utility>
+
 
 namespace nets {
     class JsonValue {
@@ -27,12 +29,12 @@ namespace nets {
         std::string ToString() const;
 
     private:
-        std::string s;
-        int i;
-        double d;
-        bool b;
-        std::vector<JsonValue> v;
-        std::map<std::string,JsonValue> map;
+        std::string string_;
+        int integer_;
+        double double_;
+        bool bool_;
+        std::vector<JsonValue> vector_;
+        std::map<std::string,JsonValue> map_;
         int number;
 
     };

@@ -7,32 +7,32 @@
 namespace nets{
     JsonValue::JsonValue() {}
     JsonValue::JsonValue(std::string s_value){
-        s=s_value;
+        string_= std::move(s_value);
         number = 6;
     }
     JsonValue::JsonValue(int i_value){
-        i=i_value;
+        integer_=i_value;
         number =1;
     }
     JsonValue::JsonValue(double d_value){
-        d=d_value;
+        double_=d_value;
         number =2;
     }
     JsonValue::JsonValue(bool b_value){
-        b=b_value;
+        bool_=b_value;
         number =3;
     }
     JsonValue::JsonValue(std::vector<JsonValue> vec){
-        v=vec;
+        vector_= std::move(vec);
         number = 4;
     }
     JsonValue::JsonValue(std::map<std::string,JsonValue> m){
-        map=m;
+        map_= std::move(m);
         number=5;
     }
     std::experimental::optional<JsonValue> JsonValue::ValueByName(const std::string &name) const{
-        auto it=map.find(name);
-        if(it!=map.end()) {
+        auto it=map_.find(name);
+        if(it!=map_.end()) {
             return std::experimental::make_optional(it->second);
         }
         else {
@@ -46,24 +46,21 @@ namespace nets{
         std::string str;
         switch(number){
             case 1:
-                return std::to_string(i);
-                ;
+                return std::to_string(integer_);
             case 2:
-                output << d;
+                output << double_;
                 str = output.str();
                 return str;
-
             case 3:
-                if(b== false){
+                if(!bool_){
                     return "false";
                 }
                 else{
                     return "true";
                 }
-
             case 4:
                 temp = "[";
-                for(auto i :v){
+                for(auto i :vector_){
                     temp += i.ToString();
                     temp += ", ";
                 }
@@ -71,7 +68,7 @@ namespace nets{
                 return temp;
             case 5:
                 temp2 = "{";
-                for (auto j:map) {
+                for (auto j:map_) {
                     temp2 += "\"";
                     for (auto i:j.first) {
                         if (i == '\\' || i == '\"') {
@@ -84,17 +81,15 @@ namespace nets{
                 temp2 = temp2.substr(0, temp2.length() - 2) + "}";
                 return temp2;
             case 6:
-                temp3="\"";
-                for(int i=0;i<s.size();++i){
-                    if(s[i]=='\\' ||s[i]=='\"'){
+                temp3+='\"';
+                for (char i : string_) {
+                    if(i =='\\' || i =='\"'){
                         temp3+='\\' ;
                     }
-                    temp3 += s[i];
+                    temp3 += i;
                 }
-                temp3+="\"";
+                temp3+='\"';
                 return temp3;
-
         }
     }
-
 }
