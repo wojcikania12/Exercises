@@ -87,9 +87,11 @@ namespace nets{
                 temp3="\"";
                 for(auto k:s){
                     if(k=='\\' || k=='\"'||k=='"'){
-                        temp3+="\\";
+                        temp3+="\\" + k;
                     }
-                    temp3+= k;
+                    else {
+                        temp3 += k;
+                    }
                 }
                 temp3+="\"";
                 return temp3;
