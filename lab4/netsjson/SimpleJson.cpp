@@ -40,11 +40,11 @@ namespace nets{
         }
     }
 
-    std::string JsonValue::ToString() const{
+    std::string JsonValue::ToString() const {
         std::ostringstream output;
-        std::string temp,temp2,temp3;
+        std::string temp, temp2, temp3;
         std::string str;
-        switch(number){
+        switch (number) {
             case 1:
                 return std::to_string(integer_);
             case 2:
@@ -52,43 +52,42 @@ namespace nets{
                 str = output.str();
                 return str;
             case 3:
-                if(!bool_){
+                if (!bool_) {
                     return "false";
-                }
-                else{
+                } else {
                     return "true";
                 }
             case 4:
                 temp = "[";
-                for(auto i :vector_){
+                for (auto i :vector_) {
                     temp += i.ToString();
                     temp += ", ";
                 }
-                temp = temp.erase(temp.length()-2,2) + "]";
+                temp = temp.erase(temp.length() - 2, 2) + "]";
                 return temp;
             case 5:
-                temp2 = "{";
+                temp2 = '{';
                 for (auto j:map_) {
                     temp2 += "\"";
                     for (auto i:j.first) {
                         if (i == '\\' || i == '\"') {
                             temp2 += '\\';
                         }
+                        temp2 += i;
                     }
-                    temp2 += j.first + "\": " + j.second.ToString() + ", ";
-
-                    }
-                temp2 = temp2.substr(0, temp2.length() - 2) + "}";
+                    temp2 += "\": " + j.second.ToString() + ", ";
+                }
+                temp2 = temp2.substr(0, temp2.length() - 2) + '}';
                 return temp2;
             case 6:
-                temp3+='\"';
+                temp3 += '\"';
                 for (char i : string_) {
-                    if(i =='\\' || i =='\"'){
-                        temp3+='\\' ;
+                    if (i == '\\' || i == '\"') {
+                        temp3 += '\\';
                     }
                     temp3 += i;
                 }
-                temp3+='\"';
+                temp3 += '\"';
                 return temp3;
         }
     }
