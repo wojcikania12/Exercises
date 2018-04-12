@@ -38,11 +38,15 @@ namespace pool{
         for(auto i : words){
             if(i == str){
                 found = true;
-                return i;
+                i = str;
+                break;
             }
         }
 
-       if(!found){
+       if(found){
+           return i;
+       }
+        else{
             words.insert(str);
             return str;
         }
