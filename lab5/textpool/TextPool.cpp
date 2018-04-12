@@ -17,6 +17,7 @@ namespace pool{
         else{
             words.clear();
             std::swap(words,pointer.words);
+            return *this;
         }
 
     }
@@ -36,7 +37,6 @@ namespace pool{
         std::string i;
         for(auto i : words){
             if(i == str){
-                i = str;
                 found = true;
                 break;
             }
