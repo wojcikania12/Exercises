@@ -27,9 +27,7 @@ namespace pool{
     }
 
     TextPool::TextPool(const std::initializer_list<std::string> &elements_list){
-        for(auto i : elements_list){
-            words.insert(i);
-        }
+        words = elements_list;
     }
 
     std::experimental::string_view TextPool::Intern(const std::string &str){
@@ -38,7 +36,6 @@ namespace pool{
         for(auto i : words){
             if(i == str){
                 found = true;
-                i = str;
                 break;
             }
         }
