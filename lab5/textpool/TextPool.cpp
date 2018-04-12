@@ -27,7 +27,7 @@ namespace pool{
 
     TextPool::TextPool(const std::initializer_list<std::string> &elements_list){
         for(auto i : elements_list){
-            words.emplace(i);
+            words.insert(i);
         }
     }
 
@@ -45,7 +45,7 @@ namespace pool{
             return i;
         }
         else{
-            words.emplace(str);
+            words.insert(str);
             return str;
         }
     }
