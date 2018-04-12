@@ -35,18 +35,11 @@ namespace pool{
         std::string i;
         for(auto i : words){
             if(i == str){
-                found = true;
-                break;
+                return i;
             }
         }
-
-       if(found){
-           return i;
-       }
-        else{
-            words.insert(str);
-            return str;
-        }
+        words.insert(str);
+        return Intern(str);
     }
 
 
