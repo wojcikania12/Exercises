@@ -120,7 +120,7 @@ namespace datastructures{
     int WordCounter::TotalWords() {
         total =0;
         for (auto i :words_list) {
-            total += i.second;
+            total += i.second.counts;
         }
         return total;
     }
