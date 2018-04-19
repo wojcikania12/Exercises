@@ -100,7 +100,7 @@ namespace datastructures{
             }
             if(not found) {
                 Counts k_ = 1;
-                words_list.insert(std::make_pair(i, k_));
+                words_list.push_back(std::make_pair(i, k_));
             }
             found = false;
 
@@ -155,7 +155,7 @@ namespace datastructures{
                 if (not found) {
                     Word w_(temp_word);
                     Counts c_(1);
-                    output.words_list.insert(std::make_pair(w_, c_));
+                    output.words_list.push_back(std::make_pair(w_, c_));
                 }
             }
         }
