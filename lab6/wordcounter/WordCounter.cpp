@@ -10,6 +10,7 @@ namespace datastructures{
 
     // Word
     Word:: ~Word(){
+        searched ="";
     }
 
     bool Word::operator<(const Word &word) const {
@@ -30,7 +31,7 @@ namespace datastructures{
 
     // Counts
     Counts::Counts(){
-        counts =0;
+        counts = 0;
     }
     Counts::~Counts(){}
 
@@ -92,7 +93,7 @@ namespace datastructures{
         for( auto i : list){
             for(auto j : words_list){
                 if(i == j.first){
-                    ++j.second;
+                    ++j.second.counts;
                     found = true;
                     break;
                 }
