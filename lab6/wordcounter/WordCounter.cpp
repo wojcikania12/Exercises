@@ -91,12 +91,18 @@ namespace datastructures{
     WordCounter::WordCounter(std::initializer_list<Word> list) {
         for( auto i : list){
             Counts k = 0;
-            for(auto j : list){
-                if(i.searched == j.searched){
-                    ++k;
+            bool found = false;
+            for(auto j : words_list){
+                if(i == j.first){
+                    ++j.second;
+                    found = true;
+                    break;
                 }
             }
-            words_list.insert(std::make_pair(i, k));
+            if(not found) {
+                Counts k_ = 1;
+                words_list.insert(std::make_pair(i, k_));
+            }
         }
 
     }
