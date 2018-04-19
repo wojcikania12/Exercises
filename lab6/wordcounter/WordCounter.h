@@ -64,8 +64,8 @@ namespace datastructures {
         friend std::ostream &operator<<(std::ostream &out_stream, WordCounter & word_counter);
         std::set <Word> Words();
     private:
-        int distinct = 0;
-        int total = 0;
+        int distinct ;
+        int total ;
         std::map <Word,Counts> words_list;
 
 

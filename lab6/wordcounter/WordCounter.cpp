@@ -110,6 +110,7 @@ namespace datastructures{
 
 
     int WordCounter::DistinctWords() {
+       distinct =0;
         for (const auto &i :words_list) {
             ++distinct;
         }
@@ -117,8 +118,9 @@ namespace datastructures{
     }
 
     int WordCounter::TotalWords() {
+        total =0;
         for (auto i :words_list) {
-            total += i.second.counts;
+            total += i.second;
         }
         return total;
     }
