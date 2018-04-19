@@ -9,7 +9,8 @@ namespace datastructures{
 
 
     // Word
-    Word:: ~Word(){}
+    Word:: ~Word(){
+    }
 
     bool Word::operator<(const Word &word) const {
         return (searched < word.searched);
@@ -64,11 +65,9 @@ namespace datastructures{
 
     Counts &Counts::operator++() {
         counts++;
-        return *this;
     }
     Counts &Counts::operator+=(int counts_){
         counts += counts_;
-        return *this;
     }
 
 
@@ -89,9 +88,8 @@ namespace datastructures{
 
 
     WordCounter::WordCounter(std::initializer_list<Word> list) {
+        bool found = false;
         for( auto i : list){
-            Counts k = 0;
-            bool found = false;
             for(auto j : words_list){
                 if(i == j.first){
                     ++j.second;
@@ -103,10 +101,11 @@ namespace datastructures{
                 Counts k_ = 1;
                 words_list.insert(std::make_pair(i, k_));
             }
+            found = false;
+
         }
 
     }
-
 
 
     int WordCounter::DistinctWords() {
@@ -126,20 +125,14 @@ namespace datastructures{
     }
 
     Counts WordCounter::operator[](std::string word) {
-        Counts temp;
         bool flag = false;
         for (auto i : words_list) {
             if (i.first.searched == word) {
-                temp = i.second;
-                flag = true;
-                break;
+                return i.second.counts;
             }
         }
-        if (flag) {
-            return temp;
-        } else {
-            return 0;
-        }
+        return 0;
+
     }
 
     WordCounter WordCounter::FromInputStream(std::istream &input) {
