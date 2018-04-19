@@ -23,8 +23,8 @@ script:
   - echo `which $CXX`
   - mkdir build && cd build;
     cmake -DCMAKE_CXX_COMPILER=$CXX ..
-  - make lab5_text_pool_tests
-  - tests/lab5test/lab5_text_pool_tests
+  - make lab6_tword_counter_tests
+  - tests/lab6test/lab6_word_counter_tests
 
 
 
