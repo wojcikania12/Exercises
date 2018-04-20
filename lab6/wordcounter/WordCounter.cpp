@@ -89,7 +89,7 @@ namespace datastructures{
     WordCounter::WordCounter(std::initializer_list<Word> list) {
         bool found = false;
         for( auto i : list){
-            for(auto j : words_list){
+            for(auto &j : words_list){
                 if(i == j.first){
                     ++j.second;
                     found = true;
