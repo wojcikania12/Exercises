@@ -91,16 +91,16 @@ namespace datastructures{
     WordCounter::WordCounter(std::initializer_list<Word> list) {
         bool found = false;
         for( auto i : list){
-            for(auto j : words_list){
+            for(auto &j : words_list){
                 if(i == j.first){
-                    ++j.second.counts;
+                    ++j.second;
                     found = true;
                     break;
                 }
             }
             if(not found) {
-                Counts k_ = 1;
-                words_list.push_back(std::make_pair(i, k_));
+                Counts k_ (1);
+                words_list.emplace_back(std::make_pair(i, k_));
             }
             found = false;
 
@@ -110,7 +110,7 @@ namespace datastructures{
 
 
     int WordCounter::DistinctWords() {
-       distinct =0;
+        distinct =0;
         for (const auto &i :words_list) {
             ++distinct;
         }
@@ -126,7 +126,6 @@ namespace datastructures{
     }
 
     Counts WordCounter::operator[](std::string word) {
-        bool flag = false;
         for (auto i : words_list) {
             if (i.first.searched == word) {
                 return i.second.counts;
@@ -170,4 +169,3 @@ namespace datastructures{
         return temp;
     }
 }
-
