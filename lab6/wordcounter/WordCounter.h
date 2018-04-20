@@ -9,7 +9,7 @@
 
 #include <iostream>
 #include <set>
-#include <vector>
+#include <map>
 #include <initializer_list>
 #include <string>
 
@@ -66,7 +66,7 @@ namespace datastructures {
     private:
         int distinct ;
         int total ;
-        std::vector<std::pair<Word,Counts>> words_list;
+        std::map<Word,Counts> words_list;
 
 
     };

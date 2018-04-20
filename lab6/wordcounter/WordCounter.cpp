@@ -2,7 +2,6 @@
 // Created by Ania Wójcik on 19.04.2018.
 //
 
-
 #include "WordCounter.h"
 
 namespace datastructures{
@@ -10,7 +9,6 @@ namespace datastructures{
 
     // Word
     Word:: ~Word(){
-        searched ="";
     }
 
     bool Word::operator<(const Word &word) const {
@@ -31,7 +29,7 @@ namespace datastructures{
 
     // Counts
     Counts::Counts(){
-        counts = 0;
+        counts = 1;
     }
     Counts::~Counts(){}
 
@@ -42,7 +40,6 @@ namespace datastructures{
     Counts::operator int() const {
         return counts;
     }
-
 
     int Counts::GetCounts(){
         return counts;
@@ -91,7 +88,7 @@ namespace datastructures{
     WordCounter::WordCounter(std::initializer_list<Word> list) {
         bool found = false;
         for( auto i : list){
-            for(auto &j : words_list){
+            for(auto j : words_list){
                 if(i == j.first){
                     ++j.second;
                     found = true;
@@ -99,8 +96,8 @@ namespace datastructures{
                 }
             }
             if(not found) {
-                Counts k_ (1);
-                words_list.emplace_back(std::make_pair(i, k_));
+                Counts k_ ;
+                words_list.insert(std::make_pair(i, k_));
             }
             found = false;
 
@@ -111,7 +108,7 @@ namespace datastructures{
 
     int WordCounter::DistinctWords() {
         distinct =0;
-        for (const auto &i :words_list) {
+        for (const auto i :words_list) {
             ++distinct;
         }
         return distinct;
@@ -126,13 +123,18 @@ namespace datastructures{
     }
 
     Counts WordCounter::operator[](std::string word) {
+        bool found = false;
         for (auto i : words_list) {
             if (i.first.searched == word) {
-                return i.second.counts;
+                found = true;
+            }
+            if(found){
+                return i.second;
+            }
+            else{
+                return 0;
             }
         }
-        return 0;
-
     }
 
     WordCounter WordCounter::FromInputStream(std::istream &input) {
@@ -153,8 +155,8 @@ namespace datastructures{
                 }
                 if (not found) {
                     Word w_(temp_word);
-                    Counts c_(1);
-                    output.words_list.push_back(std::make_pair(w_, c_));
+                    Counts c_;
+                    output.words_list.insert(std::make_pair(w_, c_));
                 }
             }
         }
