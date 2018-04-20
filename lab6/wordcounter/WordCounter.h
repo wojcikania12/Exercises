@@ -5,11 +5,9 @@
 #ifndef JIMP_EXERCISES_WORDCOUNTER_H
 #define JIMP_EXERCISES_WORDCOUNTER_H
 
-
-
 #include <iostream>
 #include <set>
-#include <map>
+#include <vector>
 #include <initializer_list>
 #include <string>
 
@@ -20,11 +18,10 @@ namespace datastructures {
         friend class WordCounter;
         Word();
         ~Word();
-        bool operator ==(const Word &word) const;
-
         Word(std::string str);
-        bool operator<(const Word& word) const;
 
+        bool operator<(const Word& word) const;
+        bool operator ==(const Word &word) const;
         std::string GetWord() const;
     private:
         std::string searched;
@@ -64,15 +61,15 @@ namespace datastructures {
         friend std::ostream &operator<<(std::ostream &out_stream, WordCounter & word_counter);
         std::set <Word> Words();
     private:
-        int distinct ;
-        int total ;
-        std::map<Word,Counts> words_list;
-
-
+        std::vector<std::pair<Word,Counts>> words_list;
+        int distinct;
+        int total;
     };
 
 }
 
-
-
 #endif //JIMP_EXERCISES_WORDCOUNTER_H
+
+
+
+
