@@ -14,9 +14,9 @@ namespace utility{
     IterableIterator()= default;
         explicit IterableIterator(std::vector<int>::const_iterator left_begin,
         std::vector<std::string>::const_iterator right_begin);
-    virtual std::pair<int, std::string> Dereference() const{};
-    virtual IterableIterator &Next() {};
-    virtual bool NotEquals(const std::unique_ptr<IterableIterator> &other) const {};
+    virtual std::pair<int, std::string> Dereference() const=0;
+    virtual IterableIterator &Next() =0;
+    virtual bool NotEquals(const std::unique_ptr<IterableIterator> &other) const =0;
     virtual ~IterableIterator() = default;
 
         std::vector<int>::const_iterator left;
@@ -94,6 +94,8 @@ namespace utility{
         Enumerate(const std::vector<std::string> &v_str);
         std::unique_ptr<IterableIterator> ConstBegin() const override;
         std::unique_ptr<IterableIterator> ConstEnd() const override;
+        std::vector<std::pair<int,std::string >>vp;
+
     };
 }
 

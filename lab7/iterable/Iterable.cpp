@@ -130,16 +130,16 @@ namespace utility {
     //Product
 
     Product::Product(const std::vector<int>& v_int, const std::vector<std::string>& v_str){
-        for(auto &i : v_int){
-            for(auto &j :v_str){
-                string_.push_back(j);
-                int_.push_back(i);
-                vp.push_back(std::make_pair(i,j));
+        for(auto i : v_int){
+            for(auto j :v_str){
+                string_.emplace_back(j);
+                int_.emplace_back(i);
+                vp.emplace_back(std::make_pair(i,j));
             }
         }
     }
     std::unique_ptr<IterableIterator> Product::ConstBegin() const {
-        auto ptr= std::make_unique<IterableIterator>(IterableIterator(int_.begin(),string_.begin()));
+        auto ptr= std::make_unique<ZipperIterator>(IterableIterator(int_.begin(),string_.begin()));
         return std::move(ptr);
     }
     std::unique_ptr<IterableIterator> Product::ConstEnd() const {
