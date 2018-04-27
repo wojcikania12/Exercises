@@ -25,14 +25,11 @@ script:
   - echo `which $CXX`
   - mkdir build && cd build;
     cmake -DCMAKE_CXX_COMPILER=$CXX ..
-  - make example_examplelibrary_tests
 
-   - make example_examplelibrary_tests
-   - make lab7_iterable_tests
-   - make lab7_iterable_zipper_tests
-   - make lab7_iterable_zipper_iterator_tests
-   - make lab7_iterable_iterator_wrapper_tests
+
+
    - make lab7_iterable_enumeration_tests
+   -tests/lab7test/lab7_iterable_enumeration_tests
 
   - cd .. && echo 'RUNNING ALL COMPILED TESTS'
   - find build/tests/ -type f -name '*tests' -exec {} \;
