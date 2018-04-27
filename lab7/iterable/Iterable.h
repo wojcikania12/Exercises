@@ -65,7 +65,11 @@ namespace utility{
                                 std::vector<int>::const_iterator left_end,
                                 std::vector<std::string>::const_iterator right_end);
 
+        explicit ZipperIterator(std::vector<int>::const_iterator left_,
+                                std::vector<std::string>::const_iterator right_);
 
+        explicit ZipperIterator(
+                                std::vector<std::string>::const_iterator string_vector);
         std::pair<int, std::string> Dereference() const override ;
         IterableIterator &Next()override;
         bool NotEquals(const std::unique_ptr<IterableIterator> &other)const override ;

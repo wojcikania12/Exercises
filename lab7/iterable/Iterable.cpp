@@ -59,6 +59,16 @@ namespace utility {
         }
     }
 
+    ZipperIterator::ZipperIterator(std::vector<int>::const_iterator left_,
+                                   std::vector<std::string>::const_iterator right_) : IterableIterator(left_, right_) {
+        left = left_;
+        right = right_;
+    }
+
+    ZipperIterator::ZipperIterator(std::vector<std::string>::const_iterator string_vector) {
+right = string_vector;
+    }
+
 
 
     //IterableIteratorWrapper
@@ -119,7 +129,7 @@ namespace utility {
         }
     }
     std::unique_ptr<IterableIterator> Zipper::ConstBegin() const {
-        auto ptr= std::make_unique<IterableIterator>(IterableIterator(int_.begin(),string_.begin()));
+        auto ptr= std::make_unique<ZipperIterator>(ZipperIterator(int_.begin(),string_.begin()));
         return std::move(ptr);
     }
     std::unique_ptr<IterableIterator> Zipper::ConstEnd() const {
@@ -139,11 +149,11 @@ namespace utility {
         }
     }
     std::unique_ptr<IterableIterator> Product::ConstBegin() const {
-        auto ptr= std::make_unique<IterableIterator>(IterableIterator(int_.begin(),string_.begin()));
+        auto ptr= std::make_unique<IterableIterator>(ZipperIterator(int_.begin(),string_.begin()));
         return std::move(ptr);
     }
     std::unique_ptr<IterableIterator> Product::ConstEnd() const {
-        auto ptr= std::make_unique<IterableIterator>(IterableIterator(int_.end(),string_.end()));
+        auto ptr= std::make_unique<IterableIterator>(ZipperIterator(int_.end(),string_.end()));
         return std::move(ptr);
     }
 
@@ -159,11 +169,11 @@ namespace utility {
 
     }
     std::unique_ptr<IterableIterator> Enumerate::ConstBegin() const {
-        auto ptr= std::make_unique<IterableIterator>(IterableIterator(int_.begin(),string_.begin()));
+        auto ptr= std::make_unique<ZipperIterator>(ZipperIterator(string_.begin()));
         return std::move(ptr);
     }
     std::unique_ptr<IterableIterator> Enumerate::ConstEnd() const {
-        auto ptr= std::make_unique<IterableIterator>(IterableIterator(int_.end(),string_.end()));
+        auto ptr= std::make_unique<ZipperIterator>(ZipperIterator(string_.end()));
         return std::move(ptr);
     }
 
