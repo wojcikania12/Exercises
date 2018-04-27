@@ -139,7 +139,7 @@ namespace utility {
         }
     }
     std::unique_ptr<IterableIterator> Product::ConstBegin() const {
-        auto ptr= std::make_unique<ZipperIterator>(IterableIterator(int_.begin(),string_.begin()));
+        auto ptr= std::make_unique<IterableIterator>(IterableIterator(int_.begin(),string_.begin()));
         return std::move(ptr);
     }
     std::unique_ptr<IterableIterator> Product::ConstEnd() const {
