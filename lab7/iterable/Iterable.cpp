@@ -149,12 +149,8 @@ namespace utility {
     };
 
     IterableIterator & ProductIterator::Next(){
-        if(left!= left_end_){
-            ++left;
-            if(right!=right_end_){
-                ++right;
-            }
-        }
+        ++left;
+        ++right;
         return* this;
     }
 
