@@ -94,10 +94,6 @@ namespace utility{
     class ProductIterator:public IterableIterator{
     public:
         ProductIterator()= default;
-        explicit ProductIterator(std::vector<int>::const_iterator left_begin,
-                                std::vector<std::string>::const_iterator right_begin,
-                                std::vector<int>::const_iterator left_end,
-                                std::vector<std::string>::const_iterator right_end);
 
         explicit ProductIterator(std::vector<int>::const_iterator left_,
                                 std::vector<std::string>::const_iterator right_);

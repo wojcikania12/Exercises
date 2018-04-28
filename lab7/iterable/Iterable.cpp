@@ -128,16 +128,6 @@ namespace utility {
 
     //ProductIterator
 
-    ProductIterator::ProductIterator(std::vector<int>::const_iterator left_begin,
-    std::vector<std::string>::const_iterator right_begin,
-            std::vector<int>::const_iterator left_end,
-    std::vector<std::string>::const_iterator right_end){
-        left = left_begin;
-        right = right_begin;
-        right_end_ = right_end;
-        left_end_ = left_end;
-    }
-
     ProductIterator::ProductIterator(std::vector<int>::const_iterator left_,
     std::vector<std::string>::const_iterator right_){
         left = left_;
