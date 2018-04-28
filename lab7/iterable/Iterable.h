@@ -39,6 +39,7 @@ namespace utility{
 
     };
 
+
     class Iterable{
     public:
         Iterable() = default;
@@ -52,8 +53,6 @@ namespace utility{
 
         std::vector<int> int_;
         std::vector<std::string> string_ ;
-        std::vector<std::pair<int,std::string >>vp;
-
 
     };
 
@@ -68,8 +67,6 @@ namespace utility{
         explicit ZipperIterator(std::vector<int>::const_iterator left_,
                                 std::vector<std::string>::const_iterator right_);
 
-        explicit ZipperIterator(
-                                std::vector<std::string>::const_iterator string_vector);
         std::pair<int, std::string> Dereference() const override ;
         IterableIterator &Next()override;
         bool NotEquals(const std::unique_ptr<IterableIterator> &other)const override ;
@@ -77,6 +74,41 @@ namespace utility{
 
     };
 
+    class EnumerateIterator:public IterableIterator {
+    public:
+        EnumerateIterator() = default;
+
+        explicit EnumerateIterator(std::vector<std::string>::const_iterator string_begin,
+                                std::vector<std::string>::const_iterator string_end);
+
+        std::pair<int, std::string> Dereference() const override;
+
+        IterableIterator &Next() override;
+
+        bool NotEquals(const std::unique_ptr<IterableIterator> &other) const override;
+
+        ~EnumerateIterator() = default;
+        int temp_index;
+    };
+
+    class ProductIterator:public IterableIterator{
+    public:
+        ProductIterator()= default;
+        explicit ProductIterator(std::vector<int>::const_iterator left_begin,
+                                std::vector<std::string>::const_iterator right_begin,
+                                std::vector<int>::const_iterator left_end,
+                                std::vector<std::string>::const_iterator right_end);
+
+        explicit ProductIterator(std::vector<int>::const_iterator left_,
+                                std::vector<std::string>::const_iterator right_);
+
+        std::pair<int, std::string> Dereference() const override ;
+        IterableIterator &Next()override;
+        bool NotEquals(const std::unique_ptr<IterableIterator> &other)const override ;
+        ~ProductIterator() = default;
+        std::vector<std::string> ::const_iterator right_copy;
+
+    };
 
     class Zipper: public Iterable{
     public:
@@ -98,7 +130,6 @@ namespace utility{
         Enumerate(const std::vector<std::string> &v_str);
         std::unique_ptr<IterableIterator> ConstBegin() const override;
         std::unique_ptr<IterableIterator> ConstEnd() const override;
-        std::vector<std::pair<int,std::string >>vp;
 
     };
 }
