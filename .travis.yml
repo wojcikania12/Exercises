@@ -25,12 +25,11 @@ script:
   - echo `which $CXX`
   - mkdir build && cd build;
     cmake -DCMAKE_CXX_COMPILER=$CXX ..
-
-
-
-   - make lab7_iterable_enumeration_tests
-   - tests/lab7test/lab7_iterable_enumeration_tests
-
+  - make example_examplelibrary_tests
+  - make lab9_base_serializer_tests
+  - make lab9_json_serializer_tests
+  - make lab9_xml_serializer_tests
+-make lab9_building_repository_tests
   - cd .. && echo 'RUNNING ALL COMPILED TESTS'
   - find build/tests/ -type f -name '*tests' -exec {} \;
   - echo 'RUNNING CPPCHECK STATIC ANALYSIS'
