@@ -48,7 +48,6 @@ namespace academia{
         int building_id;
         std::string building_number;
         std::vector<Room> all_rooms;
-        std::vector<std::reference_wrapper<const Serializable>> wrap_rooms;
     };
 
 
@@ -121,7 +120,6 @@ namespace academia{
         std::experimental::optional<Building> operator [](int number) const;
 
         std::vector<Building> all_buildings;
-        std::vector<std::reference_wrapper<const academia::Serializable>> wrap_buildings;
 
     };
 

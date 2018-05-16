@@ -40,13 +40,15 @@ namespace academia{
         building_id = id;
         building_number = std::move(number);
         all_rooms = value;
-        for(const auto &i : all_rooms){
-            wrap_rooms.push_back(i);
-        }
+
 
     }
 
     void Building::Serialize(Serializer *s) const{
+        std::vector<std::reference_wrapper<const academia::Serializable>> wrap_rooms;
+        for(const auto &i : all_rooms){
+            wrap_rooms.push_back(i);
+        }
         s-> Header("building");
         s -> IntegerField("id",building_id);
         s-> StringField("name",building_number);
@@ -141,12 +143,14 @@ namespace academia{
 
     BuildingRepository::BuildingRepository(std::initializer_list<Building> buildings) {
         all_buildings = buildings;
-        for(const auto &i : all_buildings){
-            wrap_buildings.emplace_back(i);
-        }
+
     }
 
     void BuildingRepository::StoreAll(Serializer *serializer) {
+        std::vector<std::reference_wrapper<const academia::Serializable>> wrap_buildings;
+        for(const auto &i : all_buildings){
+            wrap_buildings.emplace_back(i);
+        }
         serializer->Header("building_repository");
         serializer->ArrayField("buildings",wrap_buildings);
         serializer->Footer("building_repository");
