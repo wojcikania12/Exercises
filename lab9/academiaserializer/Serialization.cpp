@@ -86,8 +86,8 @@ namespace academia{
     void XmlSerializer::ArrayField(const std::string &field_name,
                                    const std::vector<std::reference_wrapper<const academia::Serializable>> &value){
         *outstr<<"<"<<field_name<<">";
-        for(const auto &i : value){
-            i.get().Serialize(this);
+        for(const Serializable &i : value){
+            i.Serialize(this);
         }
         *outstr<<"<\\"<<field_name<<">";
 
