@@ -25,7 +25,7 @@ namespace academia{
         int RoomId() const;
         int TimeSlot() const;
         int Year() const;
-    private:
+
         int course_id;
         int teacher_id;
         int room_id;
@@ -45,8 +45,9 @@ namespace academia{
         void InsertScheduleItem(const SchedulingItem &item);
         size_t Size() const;
         SchedulingItem operator [](int number)const;
+        SchedulingItem &operator [](int number);
 
-    private:
+
         std::vector<SchedulingItem> schedule;
     };
 
@@ -62,9 +63,9 @@ namespace academia{
 
     };
 
-    class NoViableSolutionFound : public std::runtime_error{
+    class NoViableSolutionFound {
     public:
-       explicit NoViableSolutionFound();
+       explicit NoViableSolutionFound()= default;
     };
 
     class GreedyScheduler : public Scheduler{
