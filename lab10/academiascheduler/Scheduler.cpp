@@ -128,7 +128,7 @@ namespace academia{
         if(rooms.size()*n_time_slots < coursers_number)
             throw NoViableSolutionFound();
 
-        int iterator, free_slot, index = -1;
+        int iterator, free_slot, index = 0;
         for(auto &classroom : rooms){
             iterator = n_time_slots;
             free_slot =0;
@@ -136,9 +136,10 @@ namespace academia{
                 --iterator;
                 ++free_slot;
                 if (index<counter) {
-                    new_schedule[index++].time_slot = free_slot;
-                    new_schedule[index++].room_id = classroom;
+                    new_schedule[index].time_slot = free_slot;
+                    new_schedule[index].room_id = classroom;
                 }
+                ++index;
             }
         }
         return new_schedule;
