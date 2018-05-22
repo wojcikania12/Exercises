@@ -96,10 +96,9 @@ namespace academia{
                                         const std::map<int, std::set<int>> &courses_of_year,
                                         int n_time_slots)  {
         Schedule new_schedule;
-        std::vector<SchedulingItem> temp1;
         std::map<int,int> course_count;
         SchedulingItem temp;
-        int coursers_number =0;
+        int coursers_number =0, counter=0;
 
         for(auto teacher : teacher_courses_assignment) {
             coursers_number  += teacher.second.size();
@@ -115,6 +114,7 @@ namespace academia{
                             temp.room_id = 0;
                             temp.time_slot = 0;
                             new_schedule.InsertScheduleItem(temp);
+                            ++counter;
                         }
                     }
                 }
@@ -136,13 +136,11 @@ namespace academia{
             while(iterator > 0) {
                 --iterator;
                 ++free_slot;
-                if (index<new_schedule.schedule.size()) {
-                    new_schedule[index].time_slot = free_slot;
-                    new_schedule[index].room_id = classroom;
+                if (index<counter) {
+                    new_schedule[index++].time_slot = free_slot;
+                    new_schedule[index++].room_id = classroom;
                 }
-                ++index;
             }
-
         }
         return new_schedule;
     }
