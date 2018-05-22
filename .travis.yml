@@ -27,9 +27,8 @@ script:
     cmake -DCMAKE_CXX_COMPILER=$CXX ..
   - make example_examplelibrary_tests
 
-  - make lab9_base_serializer_tests
-  - make lab9_json_serializer_tests
-  - make lab9_xml_serializer_tests
+  - make lab10_scheduler_tests
+
 
   - cd .. && echo 'RUNNING ALL COMPILED TESTS'
   - find build/tests/ -type f -name '*tests' -exec {} \;
