@@ -8,6 +8,7 @@
 #include<vector>
 #include <string>
 #include <experimental/optional>
+#include <functional>
 namespace academia{
 
     class Serializer;
